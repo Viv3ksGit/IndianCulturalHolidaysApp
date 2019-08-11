@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "355894568935",
+    "firebase_url": "https://indianculturalholidaysapp.firebaseio.com",
+    "project_id": "indianculturalholidaysapp",
+    "storage_bucket": "indianculturalholidaysapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355894568935:android:6d038cce1fc776e6",
+        "android_client_info": {
+          "package_name": "com.vivekmohanan.indianculturalholidaysapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355894568935-2en4tpvtdqcmlkconn7pvb5omo8t70sb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vivekmohanan.indianculturalholidaysapp",
+            "certificate_hash": "3ff6f5dbd053799291504cdafffe0b0549ac5160"
+          }
+        },
+        {
+          "client_id": "355894568935-51q3d2qgnsamvajqf2pjlf8m20kp8nbt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdanwDC_ERiZx-5aUmzdayqRqdk4Z3o1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355894568935-51q3d2qgnsamvajqf2pjlf8m20kp8nbt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

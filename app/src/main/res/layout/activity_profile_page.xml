@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilePage">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="390dp"
+        android:layout_height="683dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Text1"
+                android:layout_width="109dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/UpTxt1"
+                android:textAlignment="textStart"
+                android:textColor="#F57C00"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ProfileTxt1"
+                android:layout_width="342dp"
+                android:layout_height="153dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/ProfileTxt1"
+                android:textColor="#FD0C0000"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="373dp"
+                android:layout_height="171dp"
+                app:srcCompat="@drawable/bakrid" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="97dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Typical Ritual"
+                android:textColor="#F57C00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ProfileTxt2"
+                android:layout_width="351dp"
+                android:layout_height="251dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/ProfileTxt2"
+                android:textColor="#0E0000"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="86dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Facts"
+                android:textColor="#F57C00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ProfileTxt3"
+                android:layout_width="310dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/ProfileTxt3"
+                android:textColor="#F50F0101"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/ProfileTxt5"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/ProfileTxt5"
+                android:textColor="#F50F0101"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/ProfileTxt4"
+                android:layout_width="329dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/ProfileTxt4"
+                android:textColor="#F50F0101"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

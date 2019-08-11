@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Indian Cultural Holidays</string>
+    <string name="SplashTxt">www.vivekmohanan.com</string>
+    <string name="ConfirmPassHint">Confirm Password</string>
+    <string name="PasswordHint">Password</string>
+    <string name="EmailHint">Email Id</string>
+    <string name="NameHint">Name</string>
+    <string name="SignUpTxt">Sign Up</string>
+    <string name="RegisterBtn">Sign Up</string>
+    <string name="RegsiterTxt2">Already have account? Login</string>
+    <string name="LoginTxt">Login Page</string>
+    <string name="LoginSignBtn">Sign In</string>
+    <string name="LoginTxt2">Don\'t have an account? Create one now!</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Indian Cutural Holidays </string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Settings</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Logout</string>
+    <string name="SupportSuggestionTxt">Suggestion/Feedback</string>
+    <string name="Settings">Support</string>
+    <string name="ToolBarTitle">Test1</string>
+    <string name="SupportHelpTxt">Help</string>
+    <string name="SupportBugsTxt">Report Bugs</string>
+    <string name="UpcomingTxt">Upcoming Events</string>
+    <string name="date_view">Set the Date</string>
+
+
+    <string name="UpTxt1">Bakrid</string>
+    <string name="UpTxt_1">2 Days to go</string>
+    <string name="UpTxt2">Independence Day</string>
+    <string name="UpTxt_2">6 days to go</string>
+    <string name="UpTxt3">Parsi New Year</string>
+    <string name="UpTxt_3">8 Days to go</string>
+    <string name="UpTxt4">Janmashtami</string>
+    <string name="UpTxt_4">14 Days to go</string>
+    <string name="UpTxt5">Ganesh Chaturthi/</string>
+    <string name="UpTxt_5">22 Days to go</string>
+    <string name="UpTxt6">Muharram/Ashura</string>
+    <string name="UpTxt_6">30 Days to go</string>
+
+
+    <string name="ProfileTxt1">Id-ul-Zuha (Bakr-Id), which is also known as Eid al-Adha or Id-ul-Adha, is a festival that Muslims celebrate with special prayers, greetings and gifts. It is a gazetted holiday in India and is also referred to as the festival of sacrifice.</string>
+    <string name="ProfileTxt2">On the altar lay a slaughtered lamb. Joyous festivities and somber rituals mark this event. Every Muslim owning property worth 400 grams of gold or more is expected to sacrifice a goat, sheep or any other four-legged animal during one of the three days of the festival. This symbolises devotion to Allah and his desires. The sacrificial meat is then distributed and partaken of after the Id prayers. </string>
+    <string name="ProfileTxt3">1)Muslim families around the world provide aid to the poor.</string>
+    <string name="ProfileTxt4">2)There’s food. Lots of food.</string>
+    <string name="ProfileTxt5">3)Eid al-Adha is known as the “Greater Eid.”
+</string>
+</resources>
