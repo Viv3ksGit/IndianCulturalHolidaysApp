@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth Db;
 
-//       // class variables
+       // class variables
 //    GoogleSignInClient googleSignInClient;
 //    int RC_SIGN_IN;
 //    private static final String TAG = "LoginActivity";
