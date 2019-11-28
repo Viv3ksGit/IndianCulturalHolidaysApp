@@ -3,7 +3,7 @@
     <string name="SplashTxt">www.vivekmohanan.com</string>
     <string name="ConfirmPassHint">Confirm Password</string>
     <string name="PasswordHint">Password</string>
-    <string name="EmailHint">Email Id</string>
+    <string name="EmailHint">Email</string>
     <string name="NameHint">Name</string>
     <string name="SignUpTxt">Sign Up</string>
     <string name="RegisterBtn">Sign Up</string>

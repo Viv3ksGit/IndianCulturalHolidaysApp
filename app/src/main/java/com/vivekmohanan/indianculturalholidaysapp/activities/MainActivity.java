@@ -1,12 +1,8 @@
-package com.vivekmohanan.indianculturalholidaysapp;
+package com.vivekmohanan.indianculturalholidaysapp.activities;
 
-import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
@@ -19,6 +15,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.vivekmohanan.indianculturalholidaysapp.R;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -138,7 +135,7 @@ public class MainActivity extends AppCompatActivity
 //        } else if (id == R.id.nav_slideshow) {
 //
          else if (id == R.id.nav_tools) {
-            Intent Settings = new Intent (this, Settings.class);
+            Intent Settings = new Intent (this, SettingsActivity.class);
             startActivity(Settings);
 
         } else if (id == R.id.nav_share) {
@@ -179,7 +176,7 @@ public class MainActivity extends AppCompatActivity
 
     public void ViewMonth(MenuItem item) {
 
-        Intent i = new Intent(this, MonthWise.class);
+        Intent i = new Intent(this, MonthWiseActivity.class);
         startActivity(i);
     }
 
@@ -200,7 +197,7 @@ public class MainActivity extends AppCompatActivity
     public void Button7Click(View view) {
     }
     public void Button2Click(View view) {
-        Intent i = new Intent(this, ProfilePage.class);
+        Intent i = new Intent(this, ProfilePageActivity.class);
         startActivity(i);
     }
     public void Button3Click(View view) {

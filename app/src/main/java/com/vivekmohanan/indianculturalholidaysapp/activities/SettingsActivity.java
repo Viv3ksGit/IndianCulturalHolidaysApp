@@ -1,4 +1,4 @@
-package com.vivekmohanan.indianculturalholidaysapp;
+package com.vivekmohanan.indianculturalholidaysapp.activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-public class Settings extends AppCompatActivity {
+import com.vivekmohanan.indianculturalholidaysapp.R;
+
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class Settings extends AppCompatActivity {
 
 
     public void Feedback(View view) {
-        Intent i = new Intent(Settings.this, SendMail.class);
+        Intent i = new Intent(SettingsActivity.this, SendMailActivity.class);
         startActivity(i);
 
         finish();
@@ -46,7 +48,7 @@ public class Settings extends AppCompatActivity {
 
     public void ReportBugs(View view) {
 
-        new AlertDialog.Builder(Settings.this)
+        new AlertDialog.Builder(SettingsActivity.this)
                 .setTitle("Alert!!")
                 .setMessage("This function is currently unavailable")
                 .setCancelable(false)
@@ -60,7 +62,7 @@ public class Settings extends AppCompatActivity {
     }
 
     public void help(View view) {
-        new AlertDialog.Builder(Settings.this)
+        new AlertDialog.Builder(SettingsActivity.this)
                 .setTitle("Alert!!")
                 .setMessage("This function is currently unavailable")
                 .setCancelable(false)

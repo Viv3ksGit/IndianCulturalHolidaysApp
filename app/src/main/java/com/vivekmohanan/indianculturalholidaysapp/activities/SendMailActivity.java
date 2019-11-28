@@ -1,4 +1,4 @@
-package com.vivekmohanan.indianculturalholidaysapp;
+package com.vivekmohanan.indianculturalholidaysapp.activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SendMail extends AppCompatActivity {
+import com.vivekmohanan.indianculturalholidaysapp.R;
 
+public class SendMailActivity extends AppCompatActivity {
 
     EditText SendEditToTxt, SendEditSubjectTxt,SendEditMessageTxt;
     TextView SendToText;

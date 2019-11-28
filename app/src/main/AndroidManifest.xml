@@ -9,27 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfilePage"
+        <activity android:name=".activities.ProfilePageActivity"
             android:label="Bakrid" ></activity>
-        <activity android:name=".SendMail" />
+        <activity android:name=".activities.SendMailActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="Indian Cultural Holidays"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MonthWise"
+            android:name=".activities.MonthWiseActivity"
             android:label="MonthWise Events " />
         <activity
-            android:name=".RegionWise"
+            android:name=".activities.RegionWiseActivity"
             android:label="RegionWise Events" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Settings"
+            android:name=".activities.SettingsActivity"
             android:label="Settings" />
     </application>
 
