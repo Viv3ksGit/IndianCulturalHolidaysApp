@@ -1,28 +1,25 @@
-package com.vivekmohanan.indianculturalholidaysapp;
+package com.vivekmohanan.indianculturalholidaysapp.activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
-public class MonthWise extends AppCompatActivity {
+import com.vivekmohanan.indianculturalholidaysapp.R;
 
+public class ProfilePageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_month_wise);
-
+        setContentView(R.layout.activity_profile_page);
 
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -34,10 +31,4 @@ public class MonthWise extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void Bakrid(View view) {
-        Intent i = new Intent(this, ProfilePage.class);
-        startActivity(i);
-    }
-}
+    }}

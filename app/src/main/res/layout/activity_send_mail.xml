@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="22dp"
-    tools:context=".SendMail">
+    tools:context=".activities.SendMailActivity">
 
 
     <LinearLayout

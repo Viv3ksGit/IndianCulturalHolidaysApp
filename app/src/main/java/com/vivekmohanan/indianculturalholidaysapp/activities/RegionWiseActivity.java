@@ -1,4 +1,4 @@
-package com.vivekmohanan.indianculturalholidaysapp;
+package com.vivekmohanan.indianculturalholidaysapp.activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,18 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class ProfilePage extends AppCompatActivity {
+import com.vivekmohanan.indianculturalholidaysapp.R;
+
+public class RegionWiseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_page);
+        setContentView(R.layout.activity_region_wise);
 
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -29,4 +32,6 @@ public class ProfilePage extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }}
+    }
+    }
+
