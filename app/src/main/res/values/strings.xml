@@ -54,4 +54,14 @@
     <string name="ProfileTxt4">2)There’s food. Lots of food.</string>
     <string name="ProfileTxt5">3)Eid al-Adha is known as the “Greater Eid.”
 </string>
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="event_details">events_details</string>
+    <string name="share">Share</string>
+    <string name="string_to_date_convertion_format">yyyy-MM-dd</string>
+    <string name="string_to_date_convertion">d MMMM</string>
+    <string name="string_to_date_week_fromat">EEEE</string>
+    <string name="today">Today</string>
+    <string name="no_holidays_today">No holidays today.</string>
+    <string name="no_upcoming_holidays">No upcoming holidays.</string>
+    <string name="description">Description</string>
 </resources>

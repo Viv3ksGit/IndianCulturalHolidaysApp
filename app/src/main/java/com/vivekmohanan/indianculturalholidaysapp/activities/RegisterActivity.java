@@ -142,14 +142,25 @@ public class RegisterActivity extends AppCompatActivity {
         finish();
     }
 
-    public void LoginClick(View view) {
-
+    private void showLoginScreen(){
         Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(i);
-
-        finish();
     }
 
+    public void LoginClick(View view) {
+
+        showLoginScreen();
+        finish();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        showLoginScreen();
+
+        super.onBackPressed();
+    }
 
     private void showErrorMessage(boolean show) {
         if (show) {

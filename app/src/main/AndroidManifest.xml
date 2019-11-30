@@ -1,5 +1,6 @@
 <?xml version="1.1" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.vivekmohanan.indianculturalholidaysapp">
 
     <application
@@ -8,38 +9,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.ProfilePageActivity"
-            android:label="Bakrid" ></activity>
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+
         <activity android:name=".activities.SendMailActivity" />
-        <activity
-            android:name=".activities.MainActivity"
-            android:label="Indian Cultural Holidays"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.MonthWiseActivity"
-            android:label="MonthWise Events " />
-        <activity
-            android:name=".activities.RegionWiseActivity"
-            android:label="RegionWise Events" />
-        <activity
-            android:name=".activities.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".activities.MainActivity"
+            android:theme="@style/MainActivityTheme"/>
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.EventDetailsActivity" />
+        <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.SettingsActivity"
-            android:label="Settings" />
+        <activity android:name=".activities.SettingsActivity" />
     </application>
 
 </manifest>

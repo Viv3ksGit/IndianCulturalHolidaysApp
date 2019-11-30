@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
 
                         break;
                     case UserAuthenticationManager.BROADCAST_LOGIN_SUCCESSFUL:
-                        showHomeScreen();
 
                         break;
                 }

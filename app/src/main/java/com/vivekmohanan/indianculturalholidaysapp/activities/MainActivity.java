@@ -1,251 +1,251 @@
 package com.vivekmohanan.indianculturalholidaysapp.activities;
 
-import android.content.DialogInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-
-import android.view.View;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-
-import android.view.MenuItem;
-
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.vivekmohanan.indianculturalholidaysapp.R;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-    CalendarView calender;
-    TextView date_view;
+import com.google.firebase.auth.FirebaseAuth;
+import com.vivekmohanan.indianculturalholidaysapp.R;
+import com.vivekmohanan.indianculturalholidaysapp.adapters.EventsListAdapter;
+import com.vivekmohanan.indianculturalholidaysapp.managers.EventsListManager;
+import com.vivekmohanan.indianculturalholidaysapp.models.EventDetails;
+import com.vivekmohanan.indianculturalholidaysapp.utils.Utils;
 
-    private String strUserEmail;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity {
+
+    private CalendarView calenderViewCalender;
+    private TextView textViewDate;
+    private TextView textViewWeekDay;
+    private EventsListAdapter todayEventsListAdapter;
+    private EventsListAdapter eventsListAdapter;
+    private TextView textViewEventListTodayNoData;
+    private TextView textViewEventListNoData;
+
+    private Date selectedDate;
+
+    public static final String EXTRA_EVENT_DETAILS = "EXTRA_EVENT_DETAILS";
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() == null) {
+                return;
+            }
+            switch (intent.getAction()) {
+                case EventsListManager.BROADCAST_EVENTS_LIST_CHANGED:
+                    eventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListFromDate(selectedDate));
+                    todayEventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListOfDate(selectedDate));
+                    notifyNoData();
+                    notifyTodayNoData();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar_activity_main_title);
+
         setSupportActionBar(toolbar);
 
+        calenderViewCalender = findViewById(R.id.calender_view_activity_main_calender);
+        textViewDate = findViewById(R.id.text_view_activity_main_date);
+        textViewWeekDay = findViewById(R.id.text_view_activity_main_week_day);
+        RecyclerView recyclerViewUpcoming = findViewById(R.id.recycler_view_activity_main_event_list);
+        RecyclerView recyclerViewToday = findViewById(R.id.recycler_view_activity_main_today_event_list);
+        textViewEventListTodayNoData = findViewById(R.id.text_view_activity_main_today_no_data);
+        textViewEventListNoData = findViewById(R.id.text_view_activity_main_no_data);
 
-        calender = findViewById(R.id.calender);
-        date_view = findViewById(R.id.date_view);
 
-        calender
-                .setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        String string = Utils.dateToString(new Date(), getString(R.string.string_to_date_convertion_format)).toUpperCase();
+        selectedDate = stringToDate(string, getString(R.string.string_to_date_convertion_format));
+
+        String stringWeek = Utils.dateToString(selectedDate, getString(R.string.string_to_date_week_fromat)).toUpperCase();
+        textViewWeekDay.setText(stringWeek);
+        String stringDate = Utils.dateToString(selectedDate, getString(R.string.string_to_date_convertion)).toUpperCase();
+        textViewDate.setText(stringDate);
+
+        eventsListAdapter = new EventsListAdapter(EventsListManager.getInstance(this).getEventDetailsListFromDate(selectedDate),
+                new EventsListAdapter.SelectionListener() {
                     @Override
-                    public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-
-                        String Date = day + "-" + (month + 1) + "-" + year;
-                        date_view.setText(Date);
-                        calender.setFirstDayOfWeek(2);
+                    public void onSelection(EventDetails eventDetails) {
+                        Intent intent =  new Intent(MainActivity.this,EventDetailsActivity.class);
+                        intent.putExtra(MainActivity.EXTRA_EVENT_DETAILS,eventDetails);
+                        startActivity(intent);
                     }
                 });
 
+        recyclerViewUpcoming.setAdapter(eventsListAdapter);
+        recyclerViewUpcoming.setNestedScrollingEnabled(false);
 
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
+        todayEventsListAdapter = new EventsListAdapter(EventsListManager.getInstance(this).getEventDetailsListOfDate(selectedDate),
+                new EventsListAdapter.SelectionListener() {
+                    @Override
+                    public void onSelection(EventDetails eventDetails) {
+                        Intent intent =  new Intent(MainActivity.this,EventDetailsActivity.class);
+                        intent.putExtra(MainActivity.EXTRA_EVENT_DETAILS,eventDetails);
+                        startActivity(intent);
+                    }
+                });
 
-        strUserEmail = firebaseUser.getEmail().toString();
+        recyclerViewToday.setAdapter(todayEventsListAdapter);
+
+        calenderViewCalender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
+
+                String dateString = year + "-" + (month + 1) + "-" + day;
+                Date date = stringToDate(dateString, getString(R.string.string_to_date_convertion_format));
+
+                selectedDate = date;
+                updateDate();
+
+                eventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListFromDate(selectedDate));
+                todayEventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListOfDate(selectedDate));
+                notifyNoData();
+                notifyTodayNoData();
+
+            }
+        });
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        View headerView = navigationView.getHeaderView(0);
-
-        TextView UserEmail = headerView.findViewById(R.id.HeaderMail);
-        UserEmail.setText(strUserEmail);
-
-
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(EventsListManager.BROADCAST_EVENTS_LIST_CHANGED);
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, intentFilter);
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    private void updateDate() {
+        String string = Utils.dateToString(selectedDate, getString(R.string.string_to_date_convertion)).toUpperCase();
+        textViewDate.setText(string);
+
+        String stringWeek = Utils.dateToString(selectedDate, getString(R.string.string_to_date_week_fromat)).toUpperCase();
+        textViewWeekDay.setText(stringWeek);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_screen_menu, menu);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            Intent Settings = new Intent(this, MainActivity.class);
-            startActivity(Settings);
-        }
-
-            // Handle the camera action
-//         else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-         else if (id == R.id.nav_tools) {
-            Intent Settings = new Intent (this, SettingsActivity.class);
-            startActivity(Settings);
-
-        } else if (id == R.id.nav_share) {
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("Alert!!")
-                    .setMessage("I am currently working on this page, please come back later")
-                    .setCancelable(false)
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    }).show();
-
-        } else if (id == R.id.Logout) {
-
-            logout();
-            finish();
-        }
-
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    public void logout(){
+    public void logoutAndGoToLoginScreen() {
 
         FirebaseAuth.getInstance().signOut();
 
-        Intent Signout = new Intent (this, LoginActivity.class);
-
-        //Signout.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        Signout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        Signout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(Signout);
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
-    public void ViewMonth(MenuItem item) {
+    public void goToSettingsScreen() {
 
-        Intent i = new Intent(this, MonthWiseActivity.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void onShareOption(MenuItem item) {
+
+        Intent i = new Intent(this, SendMailActivity.class);
         startActivity(i);
     }
 
-    public void ViewRegion(MenuItem item) {
+    public void onSettingOptions(MenuItem item) {
 
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Alert!!")
-                .setMessage("I am currently working on this page, please come back later")
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                }).show();
+        goToSettingsScreen();
     }
 
-    public void Button7Click(View view) {
+    private Date stringToDate(String dateAsString, String type) {
+        SimpleDateFormat format = new SimpleDateFormat(type, Locale.getDefault());
+        try {
+            return format.parse(dateAsString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
-    public void Button2Click(View view) {
-        Intent i = new Intent(this, ProfilePageActivity.class);
-        startActivity(i);
-    }
-    public void Button3Click(View view) {
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Alert!!")
-                .setMessage("I am currently working on this page, please come back later")
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                }).show();
-    }
-    public void Button4Click(View view) {
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Alert!!")
-                .setMessage("I am currently working on this page, please come back later")
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                }).show();
-    }
-    public void Button5Click(View view) {
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Alert!!")
-                .setMessage("I am currently working on this page, please come back later")
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+    public void onUserProfileAction(View view) {
 
-                    }
-                }).show();
-    }
-    public void Button8Click(View view) {
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Alert!!")
-                .setMessage("I am currently working on this page, please come back later")
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.getMenuInflater().inflate(R.menu.pop_over_user_account, popup.getMenu());
+        popup.getMenu().getItem(0).setTitle(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
-                    }
-                }).show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.pop_over_user_account_logout:
+                        logoutAndGoToLoginScreen();
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        popup.show();
+    }
+
+    public void onChooseViewType(View view) {
+
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.getMenuInflater().inflate(R.menu.pop_over_select_view_type, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.pop_over_select_view_type_month_wise:
+
+                        return true;
+                    case R.id.pop_over_select_view_type_region_wise:
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        popup.show();
+    }
+
+    private void notifyNoData() {
+        if (eventsListAdapter.getItemCount() == 0) {
+            textViewEventListNoData.setVisibility(View.VISIBLE);
+        } else {
+            textViewEventListNoData.setVisibility(View.GONE);
+        }
+    }
+
+    private void notifyTodayNoData() {
+        if (todayEventsListAdapter.getItemCount() == 0) {
+            textViewEventListTodayNoData.setVisibility(View.VISIBLE);
+        } else {
+            textViewEventListTodayNoData.setVisibility(View.GONE);
+        }
     }
 }

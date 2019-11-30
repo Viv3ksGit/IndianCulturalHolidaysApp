@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:orderInCategory="1"
+        android:title="sample" />
+    <item
+        android:orderInCategory="2"
+        android:id="@+id/pop_over_user_account_logout"
+        android:title="Log out" />
+</menu>

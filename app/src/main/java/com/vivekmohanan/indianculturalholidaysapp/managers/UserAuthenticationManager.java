@@ -1,6 +1,5 @@
 package com.vivekmohanan.indianculturalholidaysapp.managers;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
@@ -9,7 +8,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.vivekmohanan.indianculturalholidaysapp.activities.ApplicationClass;
 
 public class UserAuthenticationManager {
 
@@ -44,9 +42,9 @@ public class UserAuthenticationManager {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() == null){
-                    sendLoginSuccessBroadcast();
-                }else {
                     sendLoginFailedBroadcast();
+                }else {
+                    sendLoginSuccessBroadcast();
                 }
             }
         });
