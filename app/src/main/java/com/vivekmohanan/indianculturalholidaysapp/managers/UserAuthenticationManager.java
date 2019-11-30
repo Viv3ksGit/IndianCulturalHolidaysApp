@@ -19,31 +19,29 @@ public class UserAuthenticationManager {
 
     private Context context = null;
 
-    public static synchronized UserAuthenticationManager getInstance(Context context){
+    private UserAuthenticationManager(Context context) {
+        this.context = context;
+
+        observeFirebseAuthentication();
+    }
+
+    public static synchronized UserAuthenticationManager getInstance(Context context) {
 
 
-        if(instance == null){
+        if (instance == null) {
             instance = new UserAuthenticationManager(context);
         }
 
         return instance;
     }
 
-
-    private UserAuthenticationManager(Context context){
-        this.context = context;
-
-        observeFirebseAuthentication();
-    }
-
-
-    private void observeFirebseAuthentication(){
+    private void observeFirebseAuthentication() {
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() == null){
+                if (firebaseAuth.getCurrentUser() == null) {
                     sendLoginFailedBroadcast();
-                }else {
+                } else {
                     sendLoginSuccessBroadcast();
                 }
             }
@@ -52,17 +50,16 @@ public class UserAuthenticationManager {
 
     }
 
-    public FirebaseUser getCurrentUser(){
+    public FirebaseUser getCurrentUser() {
         return FirebaseAuth.getInstance().getCurrentUser();
     }
 
 
-
-    private void sendLoginSuccessBroadcast(){
+    private void sendLoginSuccessBroadcast() {
         LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent(BROADCAST_LOGIN_SUCCESSFUL));
     }
 
-    private void sendLoginFailedBroadcast(){
+    private void sendLoginFailedBroadcast() {
         LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent(BROADCAST_LOGIN_FAILED));
     }
 

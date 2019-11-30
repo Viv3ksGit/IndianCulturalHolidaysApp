@@ -43,12 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="40dp"
-            android:text="123456"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="40dp"
-            android:ems="10"
-            android:hint="@string/PasswordHint"
-            android:inputType="textPassword" />
+            android:text="123456"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -88,7 +83,6 @@
             android:textColor="@android:color/holo_red_dark"
             android:visibility="gone" />
 
-
     </LinearLayout>
 
     <TextView
@@ -103,6 +97,4 @@
         android:padding="8dp"
         android:text="@string/LoginTxt2"
         android:textColor="@color/colorPrimary" />
-
-
 </RelativeLayout>

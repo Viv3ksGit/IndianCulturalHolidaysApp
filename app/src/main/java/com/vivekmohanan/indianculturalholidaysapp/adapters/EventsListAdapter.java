@@ -1,6 +1,5 @@
 package com.vivekmohanan.indianculturalholidaysapp.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +20,7 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListAdapter.Vi
     private ArrayList<EventDetails> eventDetailsArrayList = new ArrayList<>();
     private SelectionListener selectionListener;
 
-    public interface SelectionListener{
-        void onSelection(EventDetails eventDetails);
-    }
-
-    public EventsListAdapter(ArrayList<EventDetails> list,SelectionListener selectionListener) {
+    public EventsListAdapter(ArrayList<EventDetails> list, SelectionListener selectionListener) {
         this.eventDetailsArrayList.addAll(list);
         this.selectionListener = selectionListener;
     }
@@ -56,6 +51,10 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListAdapter.Vi
     @Override
     public int getItemCount() {
         return eventDetailsArrayList.size();
+    }
+
+    public interface SelectionListener {
+        void onSelection(EventDetails eventDetails);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

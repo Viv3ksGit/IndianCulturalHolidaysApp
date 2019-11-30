@@ -54,11 +54,11 @@ public class EventsListManager {
         ArrayList<EventDetails> list = new ArrayList<>();
 
 
-        for(EventDetails eventDetails : eventDetailsArrayList){
-            Date dateOfEvent  = new Date(eventDetails.getEventDate());
+        for (EventDetails eventDetails : eventDetailsArrayList) {
+            Date dateOfEvent = new Date(eventDetails.getEventDate());
 
-            String string = Utils.dateToString(dateOfEvent,"yyyy-MM-dd").toUpperCase();
-            Date processedDate = Utils.stringToDate(string,"yyyy-MM-dd");
+            String string = Utils.dateToString(dateOfEvent, "yyyy-MM-dd").toUpperCase();
+            Date processedDate = Utils.stringToDate(string, "yyyy-MM-dd");
 
             if (processedDate != null && processedDate.getTime() == date.getTime()) {
                 list.add(eventDetails);
@@ -72,26 +72,26 @@ public class EventsListManager {
         ArrayList<EventDetails> list = new ArrayList<>();
 
 
-        for(EventDetails eventDetails : eventDetailsArrayList){
-            Date dateOfEvent  = new Date(eventDetails.getEventDate());
+        for (EventDetails eventDetails : eventDetailsArrayList) {
+            Date dateOfEvent = new Date(eventDetails.getEventDate());
 
-            if(dateOfEvent.getTime() > date.getTime()){
+            if (dateOfEvent.getTime() > date.getTime()) {
                 list.add(eventDetails);
             }
         }
         return list;
     }
 
-    private void observeSingleTime(){
+    private void observeSingleTime() {
         FirebaseDatabase.getInstance().getReference().child(context.getString(R.string.event_details)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     EventDetails eventDetails = snapshot.getValue(EventDetails.class);
                     if (eventDetails != null) {
                         eventDetails.setId(snapshot.getKey());
-                        if(!eventDetailsArrayList.contains(eventDetails)){
+                        if (!eventDetailsArrayList.contains(eventDetails)) {
                             eventDetailsArrayList.add(eventDetails);
                         }
                     }
@@ -112,14 +112,13 @@ public class EventsListManager {
     private void observeEventsList() {
 
 
-
         FirebaseDatabase.getInstance().getReference().child(context.getString(R.string.event_details)).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 EventDetails eventDetails = dataSnapshot.getValue(EventDetails.class);
                 if (eventDetails != null) {
                     eventDetails.setId(dataSnapshot.getKey());
-                    if(!eventDetailsArrayList.contains(eventDetails)){
+                    if (!eventDetailsArrayList.contains(eventDetails)) {
                         eventDetailsArrayList.add(eventDetails);
                         sendBroadcast();
                     }
@@ -133,8 +132,8 @@ public class EventsListManager {
                 if (eventDetails != null) {
                     eventDetails.setId(dataSnapshot.getKey());
                     int index = eventDetailsArrayList.indexOf(eventDetails);
-                    if(index != -1){
-                        eventDetailsArrayList.set(index,eventDetails);
+                    if (index != -1) {
+                        eventDetailsArrayList.set(index, eventDetails);
                         sendBroadcast();
                     }
                 }
@@ -146,7 +145,7 @@ public class EventsListManager {
                 if (eventDetails != null) {
                     eventDetails.setId(dataSnapshot.getKey());
                     int index = eventDetailsArrayList.indexOf(eventDetails);
-                    if(index != -1){
+                    if (index != -1) {
                         eventDetailsArrayList.remove(index);
                         sendBroadcast();
                     }
@@ -167,7 +166,7 @@ public class EventsListManager {
 
     }
 
-    private void sendBroadcast(){
+    private void sendBroadcast() {
 
         Intent intent = new Intent(BROADCAST_EVENTS_LIST_CHANGED);
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);

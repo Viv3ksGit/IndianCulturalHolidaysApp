@@ -2,12 +2,14 @@ package com.vivekmohanan.indianculturalholidaysapp.activities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
@@ -17,8 +19,15 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 
+import android.view.MenuItem;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.vivekmohanan.indianculturalholidaysapp.R;
 import com.vivekmohanan.indianculturalholidaysapp.adapters.EventsListAdapter;
 import com.vivekmohanan.indianculturalholidaysapp.managers.EventsListManager;
@@ -65,10 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         Toolbar toolbar = findViewById(R.id.toolbar_activity_main_title);
-
         setSupportActionBar(toolbar);
 
         calenderViewCalender = findViewById(R.id.calender_view_activity_main_calender);

@@ -20,7 +20,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
+
     public void onFeedbackAction(View view) {
+
         Intent i = new Intent(SettingsActivity.this, SendMailActivity.class);
         startActivity(i);
     }
@@ -41,6 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onHelpAction(View view) {
+
         new AlertDialog.Builder(SettingsActivity.this)
                 .setTitle("Alert!!")
                 .setMessage("This function is currently unavailable")
