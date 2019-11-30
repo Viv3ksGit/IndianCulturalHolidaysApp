@@ -61,10 +61,14 @@ public class MainActivity extends AppCompatActivity {
             }
             switch (intent.getAction()) {
                 case EventsListManager.BROADCAST_EVENTS_LIST_CHANGED:
-                    eventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListFromDate(selectedDate));
+
+
                     todayEventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListOfDate(selectedDate));
-                    notifyNoData();
                     notifyTodayNoData();
+
+                    eventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListFromDate(selectedDate));
+
+                    notifyNoData();
                     break;
             }
         }
@@ -105,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         recyclerViewUpcoming.setAdapter(eventsListAdapter);
-        recyclerViewUpcoming.setNestedScrollingEnabled(false);
 
 
         todayEventsListAdapter = new EventsListAdapter(EventsListManager.getInstance(this).getEventDetailsListOfDate(selectedDate),
@@ -118,7 +121,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+
         recyclerViewToday.setAdapter(todayEventsListAdapter);
+
 
         calenderViewCalender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -130,10 +135,13 @@ public class MainActivity extends AppCompatActivity {
                 selectedDate = date;
                 updateDate();
 
-                eventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListFromDate(selectedDate));
                 todayEventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListOfDate(selectedDate));
-                notifyNoData();
                 notifyTodayNoData();
+
+                eventsListAdapter.updateData(EventsListManager.getInstance(MainActivity.this).getEventDetailsListFromDate(selectedDate));
+
+                notifyNoData();
+
 
             }
         });
