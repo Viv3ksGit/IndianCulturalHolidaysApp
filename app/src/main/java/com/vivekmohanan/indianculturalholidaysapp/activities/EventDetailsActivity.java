@@ -28,6 +28,8 @@ public class EventDetailsActivity extends AppCompatActivity {
     private  TextView textViewEventDescription;
 
     private EventDetails eventDetails;
+    private TextView textViewRituals;
+    private TextView textViewFacts;
 
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
@@ -62,6 +64,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         imageViewEventBg = findViewById(R.id.image_view_activity_event_details_bg);
         textViewEventSubtitle = findViewById(R.id.text_view_activity_event_details_subtitle);
         textViewEventDescription = findViewById(R.id.text_view_activity_event_details_description);
+        textViewRituals = findViewById(R.id.text_view_activity_event_details_rituals);
+        textViewFacts = findViewById(R.id.text_view_activity_event_details_facts);
 
         updateData();
 
@@ -74,6 +78,8 @@ public class EventDetailsActivity extends AppCompatActivity {
     private void updateData(){
         textViewEventName.setText(eventDetails.getEventName());
         textViewEventDescription.setText(eventDetails.getDescription());
+        textViewRituals.setText(eventDetails.getRituals());
+        textViewFacts.setText(eventDetails.getFacts());
 
         Picasso.get().load(eventDetails.getImageUrl()).into(imageViewEventBg);
     }

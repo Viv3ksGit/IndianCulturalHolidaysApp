@@ -25,6 +25,8 @@ public class AddHolidayActivity extends AppCompatActivity {
     private TextView textViewDate;
     private EditText editTextPlace;
     private EditText editTextDescription;
+    private EditText editTextFacts;
+    private EditText editTextRituals;
 
     private Date selectedDate = null;
 
@@ -38,6 +40,8 @@ public class AddHolidayActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.edit_view_activity_add_holiday_name);
         editTextPlace = findViewById(R.id.edit_view_activity_add_holiday_place);
         editTextDescription = findViewById(R.id.edit_view_activity_add_holiday_description);
+        editTextFacts = findViewById(R.id.edit_view_activity_add_holiday_facts);
+        editTextRituals = findViewById(R.id.edit_view_activity_add_holiday_rituals);
 
         updateDate();
 
@@ -63,9 +67,11 @@ public class AddHolidayActivity extends AppCompatActivity {
         String name = editTextName.getText().toString();
         String url = editTextPlace.getText().toString();
         String desciption = editTextDescription.getText().toString();
+        String facts = editTextFacts.getText().toString();
+        String rituals = editTextRituals.getText().toString();
 
 
-        if (name.isEmpty() ||url.isEmpty() || desciption.isEmpty() || selectedDate == null) {
+        if (name.isEmpty() ||url.isEmpty() || desciption.isEmpty() || selectedDate == null || facts.isEmpty() || rituals.isEmpty()) {
 
             Toast.makeText(this, "Please enter valid details", Toast.LENGTH_SHORT).show();
             return;
@@ -76,6 +82,8 @@ public class AddHolidayActivity extends AppCompatActivity {
         eventDetails.setDescription(desciption);
         eventDetails.setEventName(name);
         eventDetails.setImageUrl(url);
+        eventDetails.setFacts(facts);
+        eventDetails.setRituals(rituals);
         eventDetails.setEventDate(selectedDate.getTime());
 
         FirebaseDatabase.getInstance().getReference().child(getString(R.string.event_details)).push().setValue(eventDetails);

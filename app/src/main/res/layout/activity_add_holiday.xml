@@ -34,130 +34,193 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Name"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        android:layout_height="match_parent">
 
 
-        <EditText
-            android:id="@+id/edit_view_activity_add_holiday_name"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:background="@android:color/transparent"
-            android:hint="Enter a suitable subject."
-            android:padding="15dp"
-            android:textColor="@color/subTitleColor" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Date"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Name"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/edit_view_activity_add_holiday_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Enter a suitable subject."
+                    android:padding="15dp"
+                    android:textColor="@color/subTitleColor" />
 
-            <TextView
-                android:id="@+id/text_view_activity_add_holiday_date"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-
-                android:background="@android:color/transparent"
-                android:padding="15dp"
-                android:textColor="@color/subTitleColor"
-                android:textSize="18sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:onClick="onSelectDatePressed"
-                android:padding="8dp"
-                android:src="@drawable/round_date_range_24"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Date"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/text_view_activity_add_holiday_date"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Image Url"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+                        android:background="@android:color/transparent"
+                        android:padding="15dp"
+                        android:textColor="@color/subTitleColor"
+                        android:textSize="18sp" />
 
-
-        <EditText
-            android:id="@+id/edit_view_activity_add_holiday_place"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:background="@android:color/transparent"
-            android:hint="Enter image url"
-            android:padding="15dp"
-            android:textColor="@color/subTitleColor" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Description"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onSelectDatePressed"
+                        android:padding="8dp"
+                        android:src="@drawable/round_date_range_24" />
 
 
-        <EditText
-            android:id="@+id/edit_view_activity_add_holiday_description"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:gravity="top"
-            android:hint="Enter a message content."
-            android:padding="15dp"
-            android:textColor="@color/subTitleColor" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Image Url"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/edit_view_activity_add_holiday_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Enter image url"
+                    android:padding="15dp"
+                    android:textColor="@color/subTitleColor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Rituals"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/edit_view_activity_add_holiday_rituals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="Enter facts."
+                    android:padding="15dp"
+                    android:textColor="@color/subTitleColor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Facts"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/edit_view_activity_add_holiday_facts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="Enter facts."
+                    android:padding="15dp"
+                    android:textColor="@color/subTitleColor" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Description"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/edit_view_activity_add_holiday_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="Enter a message content."
+                    android:padding="15dp"
+                    android:textColor="@color/subTitleColor" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
 
         <Button
             android:id="@+id/SendMailButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
             android:onClick="onAddHolidayAction"
             android:text="Add Holiday"
@@ -166,7 +229,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-    </LinearLayout>
 
+    </RelativeLayout>
 
 </LinearLayout>

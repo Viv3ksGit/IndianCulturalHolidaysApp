@@ -8,15 +8,31 @@ import java.util.Objects;
 public class EventDetails implements Parcelable {
 
     private String id;
-
     private String eventName;
-
     private long eventDate;
-
     private String imageUrl;
     private String description;
+    private String rituals;
+    private String facts;
 
     public EventDetails() {
+    }
+
+
+    public String getFacts() {
+        return facts;
+    }
+
+    public void setFacts(String facts) {
+        this.facts = facts;
+    }
+
+    public String getRituals() {
+        return rituals;
+    }
+
+    public void setRituals(String rituals) {
+        this.rituals = rituals;
     }
 
     public String getId() {
@@ -26,7 +42,6 @@ public class EventDetails implements Parcelable {
     public void setId(String id) {
         this.id = id;
     }
-
 
     public String getEventName() {
         return eventName;
@@ -86,6 +101,8 @@ public class EventDetails implements Parcelable {
         dest.writeLong(this.eventDate);
         dest.writeString(this.imageUrl);
         dest.writeString(this.description);
+        dest.writeString(this.rituals);
+        dest.writeString(this.facts);
     }
 
     protected EventDetails(Parcel in) {
@@ -94,9 +111,11 @@ public class EventDetails implements Parcelable {
         this.eventDate = in.readLong();
         this.imageUrl = in.readString();
         this.description = in.readString();
+        this.rituals = in.readString();
+        this.facts = in.readString();
     }
 
-    public static final Parcelable.Creator<EventDetails> CREATOR = new Parcelable.Creator<EventDetails>() {
+    public static final Creator<EventDetails> CREATOR = new Creator<EventDetails>() {
         @Override
         public EventDetails createFromParcel(Parcel source) {
             return new EventDetails(source);

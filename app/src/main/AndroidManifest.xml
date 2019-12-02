@@ -14,8 +14,9 @@
 
 
         <activity android:name=".activities.SendMailActivity" />
-        <activity android:name=".activities.MainActivity"
-            android:theme="@style/MainActivityTheme"/>
+        <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/MainActivityTheme" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.EventDetailsActivity" />
