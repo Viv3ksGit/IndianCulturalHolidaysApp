@@ -19,6 +19,8 @@
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.EventDetailsActivity" />
+        <activity android:name=".activities.MonthWiseEventListActivity" />
+        <activity android:name=".activities.AddHolidayActivity" />
         <activity android:name=".activities.SplashScreenActivity">
 
             <intent-filter>

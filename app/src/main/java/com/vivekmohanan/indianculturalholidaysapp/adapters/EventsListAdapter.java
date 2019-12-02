@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.vivekmohanan.indianculturalholidaysapp.R;
 import com.vivekmohanan.indianculturalholidaysapp.models.EventDetails;
+import com.vivekmohanan.indianculturalholidaysapp.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EventsListAdapter extends RecyclerView.Adapter<EventsListAdapter.ViewHolder> {
 
@@ -45,6 +47,10 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListAdapter.Vi
 
         holder.textViewEventName.setText(eventDetails.getEventName());
 
+        String date = Utils.dateToString(new Date(eventDetails.getEventDate()), "dd MMM").toUpperCase();
+
+        holder.textViewEventDate.setText(date);
+
         Picasso.get().load(eventDetails.getImageUrl()).into(holder.imageViewBg);
     }
 
@@ -61,12 +67,14 @@ public class EventsListAdapter extends RecyclerView.Adapter<EventsListAdapter.Vi
 
         ImageView imageViewBg;
         TextView textViewEventName;
+        TextView textViewEventDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageViewBg = itemView.findViewById(R.id.image_view_item_event_details_bg);
             textViewEventName = itemView.findViewById(R.id.text_view_item_event_details_name);
+            textViewEventDate = itemView.findViewById(R.id.text_view_item_event_details_subtitle);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

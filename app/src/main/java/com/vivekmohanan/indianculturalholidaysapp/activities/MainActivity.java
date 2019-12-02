@@ -227,24 +227,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onChooseViewType(View view) {
+//
+//        PopupMenu popup = new PopupMenu(this, view);
+//        popup.getMenuInflater().inflate(R.menu.pop_over_select_view_type, popup.getMenu());
+//
+//        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//            public boolean onMenuItemClick(MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.pop_over_select_view_type_month_wise:
+//                        Intent intent = new Intent(MainActivity.this, MonthWiseEventListActivity.class);
+//                        startActivity(intent);
+//                        return true;
+//                    case R.id.pop_over_select_view_type_region_wise:
+//                        return true;
+//                }
+//                return false;
+//            }
+//        });
+//
+//        popup.show();
 
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.getMenuInflater().inflate(R.menu.pop_over_select_view_type, popup.getMenu());
-
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.pop_over_select_view_type_month_wise:
-
-                        return true;
-                    case R.id.pop_over_select_view_type_region_wise:
-                        return true;
-                }
-                return false;
-            }
-        });
-
-        popup.show();
+        Intent intent = new Intent(MainActivity.this, MonthWiseEventListActivity.class);
+        startActivity(intent);
     }
 
     private void notifyNoData() {
@@ -261,5 +265,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             textViewEventListTodayNoData.setVisibility(View.GONE);
         }
+    }
+
+    public void onAddHoliday(MenuItem item) {
+
+        startActivity(new Intent(this,AddHolidayActivity.class));
     }
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.vivekmohanan.indianculturalholidaysapp.R;
+import com.vivekmohanan.indianculturalholidaysapp.adapters.MonthListAdapter;
 import com.vivekmohanan.indianculturalholidaysapp.managers.UserAuthenticationManager;
 
 public class SplashScreenActivity extends AppCompatActivity {

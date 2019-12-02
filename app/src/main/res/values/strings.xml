@@ -63,4 +63,7 @@
     <string name="no_holidays_today">No holidays today.</string>
     <string name="no_upcoming_holidays">No upcoming holidays.</string>
     <string name="description">Description</string>
+    <string name="no_holidays_this_month">No holidays this month.</string>
+    <string name="add_holiday">Add Holiday</string>
+    <string name="please_select_a_date">Please select a date.</string>
 </resources>

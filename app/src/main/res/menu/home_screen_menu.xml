@@ -11,4 +11,9 @@
         app:showAsAction="never"
         android:onClick="onShareOption"
         android:orderInCategory="2"/>
+
+    <item android:title="@string/add_holiday"
+        app:showAsAction="never"
+        android:onClick="onAddHoliday"
+        android:orderInCategory="3"/>
 </menu>

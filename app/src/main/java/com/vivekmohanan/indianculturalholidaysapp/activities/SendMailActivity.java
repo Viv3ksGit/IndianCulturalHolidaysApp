@@ -43,4 +43,9 @@ public class SendMailActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void onBackButtonPressed(View view) {
+
+        finish();
+    }
 }

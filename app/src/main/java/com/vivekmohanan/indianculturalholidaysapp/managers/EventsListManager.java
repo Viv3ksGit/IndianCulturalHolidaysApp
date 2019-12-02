@@ -82,6 +82,45 @@ public class EventsListManager {
         return list;
     }
 
+    public ArrayList<EventDetails> getEventDetailsForMonthStarting(Date date) {
+
+        long startingMillis = date.getTime();
+
+
+        long endingMillisOfMonth = getDateForFirstDayOfNextMonth(date).getTime();
+
+
+        ArrayList<EventDetails> list = new ArrayList<>();
+
+
+        for (EventDetails eventDetails : eventDetailsArrayList) {
+            Date dateOfEvent = new Date(eventDetails.getEventDate());
+
+            if (dateOfEvent.getTime() >= startingMillis && dateOfEvent.getTime() < endingMillisOfMonth) {
+                list.add(eventDetails);
+            }
+        }
+        return list;
+    }
+
+    private Date getDateForFirstDayOfNextMonth(Date date) {
+        String monthNumberString = Utils.dateToString(date, "MM").toUpperCase();
+        String yearString = Utils.dateToString(date, "yyyy").toUpperCase();
+
+        int monthNumber = Integer.parseInt(monthNumberString);
+        int yearNumber = Integer.parseInt(yearString);
+        int nextMonthNumber = monthNumber + 1;
+
+        if (monthNumber == 12) {
+            nextMonthNumber = 1;
+            yearNumber += yearNumber;
+        }
+
+        String dateString = yearNumber + "-" + nextMonthNumber + "-01";
+        return Utils.stringToDate(dateString, "yyyy-MM-dd");
+
+    }
+
     private void observeSingleTime() {
         FirebaseDatabase.getInstance().getReference().child(context.getString(R.string.event_details)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

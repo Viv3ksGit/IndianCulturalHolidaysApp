@@ -8,28 +8,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView4"
-            app:srcCompat="@drawable/ich"
+            android:id="@+id/imageView3"
+            android:src="@drawable/ic_launcher_foreground"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"/>
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp"
+            android:layout_height="wrap_content"/>
 
         <EditText
             android:id="@+id/register_screen_register_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="36dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/EmailHint"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/register_screen_register_name"
@@ -46,19 +51,19 @@
             android:id="@+id/register_screen_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="40dp"
             android:ems="10"
             android:hint="@string/PasswordHint"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/register_screen_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="40dp"
             android:ems="10"
             android:hint="@string/ConfirmPassHint"
@@ -66,27 +71,29 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="16dp"
-            android:layout_height="wrap_content">
+            android:layout_marginRight="40dp">
 
             <Button
                 android:id="@+id/register_screen_register_user_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:backgroundTint="#F57C00"
+                android:background="@color/colorPrimary"
                 android:onClick="SignUpClicked"
                 android:text="@string/RegisterBtn"
-                android:textColor="#DDFFFFFF" />
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <ProgressBar
                 android:id="@+id/register_screen_register_loading"
                 android:layout_width="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
         </RelativeLayout>
-
 
 
         <TextView
@@ -96,7 +103,7 @@
             android:layout_marginTop="16dp"
             android:text="Please enter valid details."
             android:textColor="@android:color/holo_red_dark"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
 
     </LinearLayout>
@@ -106,13 +113,13 @@
         android:id="@+id/RegisterTxt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:onClick="LoginClick"
         android:padding="8dp"
         android:text="@string/RegsiterTxt2"
-        android:textColor="#303F9F"/>
+        android:textColor="#303F9F" />
 
 
 </RelativeLayout>
